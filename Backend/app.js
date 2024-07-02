@@ -5,7 +5,7 @@ const ConnectDB = require('./config/db');
 const session= require('express-session');
 const cookieParser = require('cookie-parser'); 
 
-
+const PORT=process.env.PORT || 8080
 
 //model
 const User = require('./models/userModel')
@@ -64,7 +64,7 @@ app.use((req,res,next)=>{
 app.use("/",router)
 
 ConnectDB().then(()=>{
-    app.listen(8080,()=>{
-        console.log('server is running');
+    app.listen(PORT,()=>{
+        console.log(`server is running at ${PORT}`);
     })
 })
